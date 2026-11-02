@@ -125,7 +125,7 @@ document.querySelectorAll('#year, .year').forEach((el) => (el.textContent = new 
 (function boxGlow() {
   const BOXES = [
     '.glass', '.card', '.cred', '.svc', '.ind', '.tbl', '.ledger', '.ledger__row', '.quote__card', '.quote__shot',
-    '.plate', '.method__steps li', '.form', '.info > div', '.ind-firm', '.about__photo', '.orbit__pill',
+    '.plate', '.method__steps li', '.form', '.info > div', '.ind-firm', '.about__photo', '.orbit__pill', '.worked__item',
   ].join(', ');
   const all = [...document.querySelectorAll(BOXES)];
   // A box that only wraps other boxes (e.g. the frame around the job rows) is skipped,

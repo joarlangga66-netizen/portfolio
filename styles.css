@@ -452,6 +452,31 @@ button { font: inherit; color: inherit; }
   background: var(--tile); border: 1px solid var(--line); box-shadow: 0 8px 24px -14px rgba(0, 0, 0, .35);
 }
 .logo-tile img { width: 100%; height: 100%; object-fit: contain; }
+
+/* "Where I've worked" strip in the hero */
+.worked { margin-top: 48px; }
+.worked__head { margin-bottom: 16px; }
+.worked__head .eyebrow { margin-bottom: 4px; }
+.worked__head h3 { font-size: 22px; }
+.worked__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.worked__item {
+  position: relative; display: flex; align-items: center; gap: 14px; height: 100%; padding: 14px 16px;
+  background: var(--glass); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow);
+  transition: border-color .18s;
+}
+.worked__item:hover { border-color: rgba(var(--accent-rgb), .6); }
+.worked__logo {
+  flex: none; width: 56px; height: 56px; border-radius: 14px; overflow: hidden; display: grid; place-items: center; padding: 6px;
+  background: var(--tile); border: 1px solid var(--line);
+}
+.worked__logo img { width: 100%; height: 100%; object-fit: contain; }
+.worked__logo--fill { padding: 0; }
+.worked__logo--fill img { object-fit: cover; }
+.worked__text { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
+.worked__text b { font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif; font-size: 16px; font-weight: 700; }
+.worked__text span { font-size: 13px; color: var(--muted); }
+.worked__text time { font-size: 12px; font-weight: 600; color: var(--accent-ink); margin-top: 2px; }
+@media (max-width: 900px) { .worked__list { grid-template-columns: 1fr; } }
 .logo-tile--fill { padding: 0; }
 .logo-tile--fill img { object-fit: cover; }
 .ledger__who h4 { font-size: 17px; }
