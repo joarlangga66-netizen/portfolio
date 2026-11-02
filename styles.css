@@ -170,6 +170,8 @@ button { font: inherit; color: inherit; }
 .theme-btn .i-moon { display: none; }
 :root[data-theme="dark"] .theme-btn .i-sun { display: none; }
 :root[data-theme="dark"] .theme-btn .i-moon { display: block; }
+/* Desktop: theme toggle sits in the rail's top-right corner so the social icons get the full row */
+@media (min-width: 1101px) { .theme-btn { position: absolute; top: 40px; right: 32px; } }
 
 .rail__nav { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
 .rail__nav a {
