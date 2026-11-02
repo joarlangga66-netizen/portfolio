@@ -135,16 +135,6 @@ document.querySelectorAll('#year, .year').forEach((el) => (el.textContent = new 
   let lastType = 'mouse';
   addEventListener('pointerdown', (e) => (lastType = e.pointerType), true);
 
-  // ---- shine: a white band of light sweeps across the box once (clipped to the box's shape)
-  function shine(el) {
-    if (reduceMotion) return;
-    let s = el.querySelector(':scope > .fx-shine');
-    if (!s) { s = document.createElement('span'); s.className = 'fx-shine'; s.setAttribute('aria-hidden', 'true'); el.appendChild(s); }
-    s.classList.remove('go');
-    void s.offsetWidth; // restart the animation
-    s.classList.add('go');
-  }
-
   // ---- sparkles: tiny white specks and fragments drift upward and fade out.
   // They live in one fixed layer over the page, so boxes with hidden overflow don't cut them off.
   const sparkLayer = document.createElement('div');
@@ -207,7 +197,6 @@ document.querySelectorAll('#year, .year').forEach((el) => (el.textContent = new 
       if (e.pointerType !== 'mouse') return;
       el.classList.add('fx-on');
       px = e.clientX; py = e.clientY;
-      shine(el);
       sparks(el, 8, px, py);
       clearInterval(trickle);
       trickle = setInterval(() => sparks(el, 1, px, py), 130); // a gentle trickle while the mouse stays
@@ -225,7 +214,6 @@ document.querySelectorAll('#year, .year').forEach((el) => (el.textContent = new 
     el.addEventListener('click', (e) => {
       if (lastType === 'mouse') return;
       aim(e.clientX, e.clientY);
-      shine(el);
       sparks(el, 12, e.clientX, e.clientY);
       el.classList.add('fx-on');
       clearTimeout(timer);
@@ -483,11 +471,11 @@ if (!reduceMotion && matchMedia('(pointer: fine)').matches) {
 
   resize();
   addEventListener('resize', resize);
-  if (document.fonts) document.fonts.ready.then(() => { layout = null; }); // re-measure once Poppins loads
+  if (document.fonts) document.fonts.ready.then(() => { layout = null; }); // re-measure once the web font loads
 
   function buildLayout() {
     let size = 20 * dpr;
-    const font = () => 'italic 500 ' + size + 'px Poppins, system-ui, sans-serif';
+    const font = () => 'italic 500 ' + size + 'px Inter, system-ui, sans-serif';
     vctx.font = font();
     // Desktop: keep the verse in the content area, not behind the side menu
     const left = innerWidth > 1100 ? (parseFloat(getComputedStyle(root).getPropertyValue('--rail-w')) || 312) * dpr : 0;
